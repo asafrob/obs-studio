@@ -5,8 +5,11 @@
 
 using namespace std;
 
-#define WINDOW_NAME   ((NSString*)kCGWindowName)
-#define WINDOW_LAYER  ((NSNumber*)kCGWindowLayer)
+#define WINDOW_NAME   ((__bridge NSString*)kCGWindowName)
+#define WINDOW_LAYER  ((__bridge NSNumber*)kCGWindowLayer)
+#define WINDOW_NUMBER ((__bridge NSString*)kCGWindowNumber)
+#define OWNER_NAME    ((__bridge NSString*)kCGWindowOwnerName)
+#define OWNER_PID     ((__bridge NSNumber*)kCGWindowOwnerPID)
 
 static NSComparator win_info_cmp = ^(NSDictionary *o1, NSDictionary *o2)
 {
@@ -27,11 +30,9 @@ static NSComparator win_info_cmp = ^(NSDictionary *o1, NSDictionary *o2)
 
 static NSArray *enumerate_windows(void)
 {
-	NSArray *arr = (NSArray*)CGWindowListCopyWindowInfo(
+	NSArray *arr = (__bridge NSArray*)CGWindowListCopyWindowInfo(
 			kCGWindowListOptionOnScreenOnly,
 			kCGNullWindowID);
-
-	[arr autorelease];
 
 	return [arr sortedArrayUsingComparator:win_info_cmp];
 }
