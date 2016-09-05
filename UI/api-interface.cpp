@@ -250,7 +250,8 @@ struct OBSStudioAPI : obs_frontend_callbacks {
 			callback(private_data);
 		};
 
-		main->ui->menuTools->addAction(QT_UTF8(name), func);
+		QAction *action = main->ui->menuTools->addAction(QT_UTF8(name));
+		QObject::connect(action, &QAction::triggered, func);
 	}
 
 	void obs_frontend_add_event_callback(obs_frontend_event_cb callback,
