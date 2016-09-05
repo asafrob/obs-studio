@@ -5,10 +5,11 @@
 #include <vector>
 #include <string>
 
+#include "ui_auto-scene-switcher.h"
+
 struct obs_weak_source;
 typedef struct obs_weak_source obs_weak_source_t;
 
-class Ui_SceneSwitcher;
 class QCloseEvent;
 
 class SceneSwitcher : public QDialog {
