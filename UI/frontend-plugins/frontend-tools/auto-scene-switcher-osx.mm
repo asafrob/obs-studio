@@ -79,7 +79,7 @@ void GetCurrentWindowTitle(string &title)
 	/* popen fgets will include a newline at the end of the string */
 	windowname.pop_back();
 #else
-	name.resize(0);
+	title.resize(0);
 
 	@autoreleasepool {
 		for (NSDictionary *dict in enumerate_windows()) {
