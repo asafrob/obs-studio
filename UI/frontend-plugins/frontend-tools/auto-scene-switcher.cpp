@@ -5,7 +5,6 @@
 #include <QMainWindow>
 #include <QAction>
 #include "auto-scene-switcher.hpp"
-#include "ui_auto-scene-switcher.h"
 
 #include <condition_variable>
 #include <chrono>
